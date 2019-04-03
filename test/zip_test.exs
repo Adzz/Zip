@@ -31,7 +31,7 @@ defmodule ZipTest do
   end
 
   describe "multiply/2 - List" do
-    test "subtracts each element in the list elementwise" do
+    test "multiplies each element in the list elementwise" do
       assert Zip.multiply([2, 4, 6], [2, 4, 6]) == [4, 16, 36]
     end
 
@@ -41,6 +41,20 @@ defmodule ZipTest do
 
     test "differing list lengths" do
       assert_raise Zip.CollectionsOfDifferentSizes, fn -> Zip.multiply([1, 2], [1]) end
+    end
+  end
+
+  describe "divide/2 - List" do
+    test "divides each element in the list elementwise" do
+      assert Zip.divide([2, 8, 6], [2, 2, 6]) == [1.0, 4.0, 1.0]
+    end
+
+    test "empty lists" do
+      assert Zip.divide([], []) == []
+    end
+
+    test "differing list lengths" do
+      assert_raise Zip.CollectionsOfDifferentSizes, fn -> Zip.divide([1, 2], [1]) end
     end
   end
 end

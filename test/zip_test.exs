@@ -59,7 +59,7 @@ defmodule ZipTest do
   end
 
   describe "apply/3 - List" do
-    test "Applies the given mod / fun elementwise to the things in the list" do
+    test "Applies the given fun elementwise to the things in the list" do
       assert Zip.apply(["TEST"], ["ING"], fn a, b -> a <> b end) == ["TESTING"]
     end
   end

@@ -1,24 +1,48 @@
 # Zip 🤐
 
-A simple library to enable elementwise operations on collections. Use it like this:
+Okay. If you made it to here, you are curious, and I applaud it. This branch is a bit of an experiment but it works to allow you to fully define for yourselves each of the ways that a zipped thing may vary.
+
+The options are:
+
+1. The type of collection you are using (list, stream, whatever)
+2. The type of the elements in the list - (int, string, decimal)
+3. The operations on those types (add, subtract, divide, split....)
+
+Let me show you some examples:
 
 ```elixir
-Zip.add([1], [1])      # => [2]
-Zip.multiply([1], [1]) # => [1]
-Zip.subtract([1], [1]) # => [0]
-Zip.divide([10], [2])  # => [5]
-Zip.apply([5], [2], Integer, :mod)  # => [1]
-Zip.apply([[1, 2], [3, 4]], [7, 7], Enum, :intersperse) #=> [[1, 7, 2], [3, 7, 4]]
-Zip.apply([[1, 2, 3, 4], [1, 2, 3, 4]], [2, 3], Enum, :map_every, [fn x -> x * 10 end])  # => [[10, 2, 30, 4], [10, 2, 3, 40]]
+Zip.apply([1], [1], Add) # => [2]
+Zip.apply([1], [1], Sutract) # => [0]
+Zip.apply([8, 6], [2, 2], Divide) # => [4, 3]
 ```
 
-### Roadmap
+Now more interestingly you can define your own operations like so:
 
-1. Enable arbitrary operations - either user defined or callbacks?
-2. Enable a wider range of elements in the list - support decimal, e.g.
-3. Probably part of 2 - ensure elementwise pairs are of the same type. Do we need to? As long as the function accepts them fine
-4. Stream dat data
-5. Mad speed gainz?
+```elixir
+defprotocol Join do
+  def calculate(x, y)
+end
+```
+
+Then implement it for a type that might make up the element in a list we are zipping:
+
+```elixir
+defimpl Join, for: String do
+  def string(x, y), do: x <> y
+end
+```
+
+Then you could use it like this:
+
+```elixir
+Zip.apply(["test"], ["ing"], Join) # => ["testing"]
+```
+
+So you can:
+
+1. Implement the Zip protocol for your own collections (like streams)
+2. Define your own operation protocols
+3. Implement them for any type
 
 ## Installation
 

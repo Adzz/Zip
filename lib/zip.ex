@@ -11,20 +11,8 @@ defprotocol Zip do
 
   ### Example
 
-      iex> Zip.add([1, 2], [1, 2])
+      iex> Zip.apply([1, 2], [1, 2], Add)
       [2, 4]
   """
-
-  def add(a, b)
-  def multiply(a, b)
-  def subtract(a, b)
-  def divide(a, b)
-  def apply(a, b, fun)
-  def apply(a, b, mod, fun)
-  def apply(a, b, mod, fun, args)
+  def apply(collection_1, collection_2, operation)
 end
-
-# The combinations are:
-# 1. The type of collection you are using (list, stream, whatever)
-# 2. The elements of the list - their type (int float decimal)
-# 3. The operations on those types (add, subtract, divide, split....)

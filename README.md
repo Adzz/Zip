@@ -28,7 +28,7 @@ Zip.apply([[1, 2, 3, 4], [1, 2, 3, 4]], [2, 3], Enum, :map_every, [fn x -> x * 1
 ```elixir
 def deps do
   [
-    {:zip, "~> 0.1.0"}
+    {:zip, "~> 0.1.1"}
   ]
 end
 ```

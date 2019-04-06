@@ -51,7 +51,7 @@ defimpl Zip, for: List do
   """
   def apply(a, b, mod, fun, args), do: elementwise(a, b, mod, fun, args)
 
-  def elementwise(a, b, fun) do
+  defp elementwise(a, b, fun) do
     if length(a) !== length(b) do
       raise(Zip.CollectionsOfDifferentSizes, {a, b})
     end
@@ -63,7 +63,7 @@ defimpl Zip, for: List do
     end)
   end
 
-  def elementwise(a, b, mod, fun, args) do
+  defp elementwise(a, b, mod, fun, args) do
     if length(a) !== length(b) do
       raise(Zip.CollectionsOfDifferentSizes, {a, b})
     end
@@ -75,7 +75,7 @@ defimpl Zip, for: List do
     end)
   end
 
-  def elementwise(a, b, mod, fun) do
+  defp elementwise(a, b, mod, fun) do
     if length(a) !== length(b) do
       raise(Zip.CollectionsOfDifferentSizes, {a, b})
     end

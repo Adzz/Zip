@@ -19,6 +19,7 @@ Zip.apply([[1, 2, 3, 4], [1, 2, 3, 4]], [2, 3], Enum, :map_every, [fn x -> x * 1
 3. Probably part of 2 - ensure elementwise pairs are of the same type. Do we need to? As long as the function accepts them fine
 4. Stream dat data
 5. Mad speed gainz?
+6. Zip nth? Or interleave / intersperse type functions.
 
 ## Installation
 

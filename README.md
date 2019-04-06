@@ -14,12 +14,8 @@ Zip.apply([[1, 2, 3, 4], [1, 2, 3, 4]], [2, 3], Enum, :map_every, [fn x -> x * 1
 
 ### Roadmap
 
-1. Enable arbitrary operations - either user defined or callbacks?
-2. Enable a wider range of elements in the list - support decimal, e.g.
-3. Probably part of 2 - ensure elementwise pairs are of the same type. Do we need to? As long as the function accepts them fine
-4. Stream dat data
-5. Mad speed gainz?
-6. Zip nth? Or interleave / intersperse type functions.
+1. Stream dat data for testing
+2. Mad speed gainz?
 
 ## Installation
 

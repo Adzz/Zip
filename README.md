@@ -44,6 +44,8 @@ So you can:
 2. Define your own operation protocols
 3. Implement them for any type
 
+What's interesting about this approach is that if you define a new implementation for the Zip protocol, you get for free all of the operations you previously defined for that collection.
+
 ## Installation
 
 [Available in Hex](https://hex.pm/docs/publish), install by adding `zip` to your list of dependencies in `mix.exs`:

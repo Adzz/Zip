@@ -11,7 +11,7 @@ defprotocol Zip do
 
   ### Example
 
-      iex> Zip.apply([1, 2], [1, 2], Add)
+      iex> Zip.apply([1, 2], [1, 2], %Add{})
       [2, 4]
   """
   def apply(collection_1, collection_2, operation)

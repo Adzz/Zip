@@ -1,4 +1,5 @@
 defmodule Subtract do
+  defstruct calculate: &__MODULE__.calculate/2
   @behaviour Operation
 
   @impl true

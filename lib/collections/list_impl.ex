@@ -4,10 +4,7 @@ defimpl Zip, for: List do
       raise(Zip.CollectionsOfDifferentSizes, {a, b})
     end
 
-    a
-    |> Enum.with_index()
-    |> Enum.map(fn {item, index} ->
-      operation.calculate(item, Enum.at(b, index))
-    end)
+    Enum.zip(a, b)
+    |> Enum.map(fn {a, b} -> operation.calculate(a, b) end)
   end
 end

@@ -4,7 +4,7 @@ defprotocol Zip do
   applicative.
 
   The collections need to have some sort of order for this interface to return stable results, so
-  a good example is a list. The zip interface allows us, for example, to add elements from to lists
+  a good example is a list. The zip interface allows us, for example, to add elements from two lists
   together pairwise. What does pairwise mean? You take the first element in the first list, and the
   first element in the second list and add them together. Then the second elements in each list get
   added together and so on.

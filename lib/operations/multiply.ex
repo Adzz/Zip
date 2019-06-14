@@ -7,6 +7,9 @@ defmodule Multiply do
   def calculate(a = %Decimal{}, b = %Decimal{}), do: Decimal.mult(a, b)
 end
 
+# Alternative with protocols. Using a behaviour allows us to ensure that
+# the module implements a function, which we can call in all of the
+# implementations of the Zip protocol.
 # defprotocol Multiply do
 #   def calculate(a, b)
 # end

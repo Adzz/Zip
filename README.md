@@ -12,7 +12,7 @@ Let me show you some examples:
 
 ```elixir
 Zip.apply([1], [1], Add) # => [2]
-Zip.apply([1], [1], Sutract) # => [0]
+Zip.apply([1], [1], Subtract) # => [0]
 Zip.apply([8, 6], [2, 2], Divide) # => [4, 3]
 ```
 

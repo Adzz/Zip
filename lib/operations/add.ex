@@ -7,6 +7,9 @@ defmodule Add do
   def calculate(a = %Decimal{}, b = %Decimal{}), do: Decimal.add(a, b)
 end
 
+# Alternative with protocols. Using a behaviour allows us to ensure that
+# the module implements a function, which we can call in all of the
+# implementations of the Zip protocol.
 # defprotocol Add do
 #   def calculate(a, b)
 # end

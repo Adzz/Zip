@@ -11,9 +11,9 @@ The options are:
 Let me show you some examples:
 
 ```elixir
-Zip.apply([1], [1], Add) # => [2]
-Zip.apply([1], [1], Subtract) # => [0]
-Zip.apply([8, 6], [2, 2], Divide) # => [4, 3]
+Zip.apply([1], [1], %Add{}) # => [2]
+Zip.apply([1], [1], %Subtract{}) # => [0]
+Zip.apply([8, 6], [2, 2], %Divide{}) # => [4, 3]
 ```
 
 Now more interestingly you can define your own operations like so:
@@ -35,7 +35,7 @@ end
 Then you could use it like this:
 
 ```elixir
-Zip.apply(["test"], ["ing"], Join) # => ["testing"]
+Zip.apply(["test"], ["ing"], %Join{}) # => ["testing"]
 ```
 
 So you can:

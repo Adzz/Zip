@@ -10,10 +10,6 @@ defmodule ListImplTest do
     test "empty lists" do
       assert Zip.apply([], [], %Add{}) == []
     end
-
-    test "differing list lengths" do
-      assert_raise Zip.CollectionsOfDifferentSizes, fn -> Zip.apply([1, 2], [1], %Add{}) end
-    end
   end
 
   describe "subtract/2" do
@@ -23,10 +19,6 @@ defmodule ListImplTest do
 
     test "empty lists" do
       assert Zip.apply([], [], %Subtract{}) == []
-    end
-
-    test "differing list lengths" do
-      assert_raise Zip.CollectionsOfDifferentSizes, fn -> Zip.apply([1, 2], [1], %Subtract{}) end
     end
   end
 
@@ -38,10 +30,6 @@ defmodule ListImplTest do
     test "empty lists" do
       assert Zip.apply([], [], %Multiply{}) == []
     end
-
-    test "differing list lengths" do
-      assert_raise Zip.CollectionsOfDifferentSizes, fn -> Zip.apply([1, 2], [1], %Multiply{}) end
-    end
   end
 
   describe "divide/2" do
@@ -51,10 +39,6 @@ defmodule ListImplTest do
 
     test "empty lists" do
       assert Zip.apply([], [], %Divide{}) == []
-    end
-
-    test "differing list lengths" do
-      assert_raise Zip.CollectionsOfDifferentSizes, fn -> Zip.apply([1, 2], [1], %Divide{}) end
     end
   end
 end

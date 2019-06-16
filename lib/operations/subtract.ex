@@ -20,9 +20,9 @@ defprotocol Subtract do
 end
 
 defimpl Subtract, for: Integer do
-  def calculate(a, b), do: a - b
+  def calculate(a, b) when is_integer(b), do: a - b
 end
 
 defimpl Subtract, for: Decimal do
-  def calculate(a, b), do: Decimal.sub(a, b)
+  def calculate(a, b = %Decimal{}), do: Decimal.sub(a, b)
 end

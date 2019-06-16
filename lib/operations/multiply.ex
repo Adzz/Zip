@@ -19,9 +19,9 @@ defprotocol Multiply do
 end
 
 defimpl Multiply, for: Integer do
-  def calculate(a, b), do: a * b
+  def calculate(a, b) when is_integer(b), do: a * b
 end
 
 defimpl Multiply, for: Decimal do
-  def calculate(a, b), do: Decimal.mult(a, b)
+  def calculate(a, b = %Decimal{}), do: Decimal.mult(a, b)
 end

@@ -19,9 +19,9 @@ defprotocol Divide do
 end
 
 defimpl Divide, for: Integer do
-  def calculate(a, b), do: a / b
+  def calculate(a, b) when is_integer(b), do: a / b
 end
 
 defimpl Divide, for: Decimal do
-  def calculate(a, b), do: Decimal.div(a, b)
+  def calculate(a, b = %Decimal{}), do: Decimal.div(a, b)
 end

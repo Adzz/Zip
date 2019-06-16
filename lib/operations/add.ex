@@ -19,9 +19,9 @@ defprotocol Add do
 end
 
 defimpl Add, for: Integer do
-  def calculate(a, b), do: a + b
+  def calculate(a, b) when is_integer(b), do: a + b
 end
 
 defimpl Add, for: Decimal do
-  def calculate(decimal, decimal_2), do: Decimal.add(decimal, decimal_2)
+  def calculate(decimal, decimal_2 = %Decimal{}), do: Decimal.add(decimal, decimal_2)
 end

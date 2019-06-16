@@ -83,7 +83,7 @@ blue = %RGB{red: Decimal.new(0), green: Decimal.new(0), blue: Decimal.new(255)}
 Zip.apply(red, blue, %Add{}) #=> %RGB{red: Decimal.new(255), green: Decimal.new(0), blue: Decimal.new(255)}
 ```
 
-What's interesting about this approach is that if you define a new implementation for the Zip protocol, you get for free all of the operations you previously defined for that collection. So now we already have `Add` implemented, if we wanted to implement Zip for a new datatype, we could do that like so:
+What's interesting about this approach is that if you define a new implementation for the Zip protocol, you get for free all of the operations you previously defined. So now we already have `Add` implemented, if we wanted to implement Zip for a new datatype, we could do that like so:
 
 ```elixir
 defimpl Zip, for: List do
@@ -113,4 +113,8 @@ end
 
 Docs can be found here: [https://hexdocs.pm/zip](https://hexdocs.pm/zip) 👩‍⚕️ 👩‍⚕️
 
-<!-- Rando thoughts: this is 3 levels deep. Am I making a type system? Would 4 levels make dependant types? -->
+<!-- Rando thoughts:
+  this is 3 levels deep. Am I making a type system? Would 4 levels make dependant types?
+  Also for all of our operations, we could create one struct and use that for the whole of the program
+  I wonder if that would be better / worse for performance / clarity
+-->

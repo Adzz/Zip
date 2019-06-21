@@ -26,3 +26,17 @@ end
 defimpl Subtract, for: Decimal do
   def calculate(a, b = %Decimal{}), do: Decimal.sub(a, b)
 end
+
+defimpl Subtract, for: List do
+  def calculate(list_1, list_2) when is_list(list_2), do: Zip.apply(list_1, list_2, %Subtract{})
+end
+
+defimpl Subtract, for: Map do
+  def calculate(map, map_2) when is_map(map_2), do: Zip.apply(map, map_2, %Subtract{})
+end
+
+# Streams
+defimpl Subtract, for: Function do
+  def calculate(stream, stream_2) when is_function(stream_2),
+    do: Zip.apply(stream, stream_2, %Subtract{})
+end

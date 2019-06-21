@@ -25,3 +25,17 @@ end
 defimpl Multiply, for: Decimal do
   def calculate(a, b = %Decimal{}), do: Decimal.mult(a, b)
 end
+
+defimpl Multiply, for: List do
+  def calculate(list_1, list_2) when is_list(list_2), do: Zip.apply(list_1, list_2, %Multiply{})
+end
+
+defimpl Multiply, for: Map do
+  def calculate(map, map_2) when is_map(map_2), do: Zip.apply(map, map_2, %Multiply{})
+end
+
+# Streams
+defimpl Multiply, for: Function do
+  def calculate(stream, stream_2) when is_function(stream_2),
+    do: Zip.apply(stream, stream_2, %Multiply{})
+end

@@ -25,3 +25,21 @@ end
 defimpl Add, for: Decimal do
   def calculate(decimal, decimal_2 = %Decimal{}), do: Decimal.add(decimal, decimal_2)
 end
+
+# For anything that implements the Zip interface, we can automatically
+# implement any operation, as Zip.apply and passing the operation in
+# as the last arg.
+
+defimpl Add, for: List do
+  def calculate(list_1, list_2) when is_list(list_2), do: Zip.apply(list_1, list_2, %Add{})
+end
+
+defimpl Add, for: Map do
+  def calculate(map, map_2) when is_map(map_2), do: Zip.apply(map, map_2, %Add{})
+end
+
+# Streams
+defimpl Add, for: Function do
+  def calculate(stream, stream_2) when is_function(stream_2),
+    do: Zip.apply(stream, stream_2, %Add{})
+end

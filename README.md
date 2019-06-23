@@ -49,13 +49,9 @@ defimpl Zip, for: RGB do
 end
 ```
 
-Now because we know all of the values will be integers, we can create an operation protocol like `Add` and implement it for integers. There are two ways to do this, with a macro (first) and without:
+Now because we know all of the values will be integers, we can create an operation protocol like `Add` and implement it for integers. An operation protocol should always have a calculate function, and should also define a struct with a calculate key which points to that function. This gives us something to rely on when we implement the Zip protocol - namely that the last arg will be a struct that has a calculate key which will point to the function we want.
 
 ```elixir
-require Define
-Define.operation(Add)
-
-# The above macro generates the below, so you could not use the macro and define it for yourself:
 defprotocol Add do
   defstruct calculate: &__MODULE__.calculate/2
   def calculate(a, b)

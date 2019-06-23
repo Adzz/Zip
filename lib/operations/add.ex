@@ -30,6 +30,16 @@ end
 # implement any operation, as Zip.apply and passing the operation in
 # as the last arg.
 
+# That ensures we maintain the structure of whatever we pass in. But is that correct?
+# Only if you want to operate on the values in the container. If you want to operate on
+# The container itself, then we can't do this.
+
+# Do we want to be able to operate on containers. If so, the recursion wont work?
+
+# So when do we want to preserve structure? When `map`ping.
+# How do we make this paradigm higher order?
+# Well we just define it the same way we define the Zip protocol.
+
 defimpl Add, for: List do
   def calculate(list_1, list_2) when is_list(list_2), do: Zip.apply(list_1, list_2, %Add{})
 end

@@ -8,9 +8,7 @@
 #   def calculate(a = %Decimal{}, b = %Decimal{}), do: Decimal.sub(a, b)
 # end
 
-# Using a behaviour allows us to ensure that
-# the module implements a function, which we can call in all of the
-# implementations of the Zip protocol. But using protocols means we get extension, meaning
+# Using protocols means we get extension, meaning
 # we can define some implementations of the functions, and everyone else can implement their own.
 # Otherwise we need to crack open the Subtract module and add implementations for calculate there.
 

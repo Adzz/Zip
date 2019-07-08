@@ -1,4 +1,4 @@
-# doing this is probably bad because of protocol consolidation?
+# doing this @ runtime is probably bad because of protocol consolidation?
 
 defmodule Define do
   defmacro operation(name) do

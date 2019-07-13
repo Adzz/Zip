@@ -14,7 +14,7 @@ Zip.apply([[1, 2, 3, 4], [1, 2, 3, 4]], [2, 3], Enum, :map_every, [fn x -> x * 1
 [Available in Hex](https://hex.pm/docs/publish), install by adding `zip` to your list of dependencies in `mix.exs`:
 
 ```elixir
-def deps, do: [{:zip, "~> 0.1.1"}]
+def deps, do: [{:zip, "~> 1.0.0"}]
 ```
 
 Docs can be found here: [https://hexdocs.pm/zip](https://hexdocs.pm/zip) 👩‍⚕️ 👩‍⚕️

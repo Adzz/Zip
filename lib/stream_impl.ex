@@ -7,10 +7,11 @@ defimpl Zip, for: [Function] do
   end
 
   def apply(a, b, mod, fun) when is_function(fun) do
-    Stream.zip(a, b) |> Stream.map(fn {x, y} -> Kernel.apply(mod, fun, [a, b]) end)
+    Stream.zip(a, b) |> Stream.map(fn {x, y} -> Kernel.apply(mod, fun, [x, y]) end)
   end
 
   def apply(a, b, mod, fun, args) do
-    Stream.zip(a, b) |> Stream.map(fn {x, y} -> Kernel.apply(mod, fun, [a, b] ++ args) end)
+    Stream.zip(a, b)
+    |> Stream.map(fn {x, y} -> Kernel.apply(mod, fun, [x, y] ++ args) end)
   end
 end

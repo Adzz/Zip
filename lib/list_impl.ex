@@ -1,37 +1,4 @@
 defimpl Zip, for: List do
-  @doc """
-  Adds each element in the two lists pairwise, meaning, the first element in a
-  and the first element in b are added together. Then the second element in each
-  are and so on. Returns a list of the result of those additions
-  """
-  def add(a, b), do: elementwise(a, b, Kernel, :+)
-
-  @doc """
-  Multiplies each element in the two lists pairwise, meaning, the first element in a
-  and the first element in b are multiplied together. Then the second element in each
-  are and so on. Returns a list of the result of those multiplications
-  """
-  def multiply(a, b), do: elementwise(a, b, Kernel, :*)
-
-  @doc """
-  Subtracts each element in the two lists pairwise, meaning, the first element in a
-  and the first element in b are subtracted together. Then the second element in each
-  are and so on. Returns a list of the result of those subtractions
-  """
-  def subtract(a, b), do: elementwise(a, b, Kernel, :-)
-
-  @doc """
-  Divides each element in the two lists pairwise, meaning, the first element in a
-  and the first element in b are divided. Then the second element in each
-  are and so on. Returns a list of the result of those divisions
-  """
-  def divide(a, b), do: elementwise(a, b, Kernel, :/)
-
-  @doc """
-  Calls the given fun with each element in the two lists pairwise, meaning, fun is first called with
-  the first element in a and the first element in b. Then it is called with the second element in each
-  list, then the third and so on.
-  """
   def apply(a, b, fun), do: elementwise(a, b, fun)
 
   @doc """
@@ -52,26 +19,17 @@ defimpl Zip, for: List do
   def apply(a, b, mod, fun, args), do: elementwise(a, b, mod, fun, args)
 
   defp elementwise(a, b, fun) do
-    a
-    |> Enum.with_index()
-    |> Enum.map(fn {item, index} ->
-      fun.(item, Enum.at(b, index))
-    end)
-  end
-
-  defp elementwise(a, b, mod, fun, args) do
-    a
-    |> Enum.with_index()
-    |> Enum.map(fn {item, index} ->
-      Kernel.apply(mod, fun, [item, Enum.at(b, index)] ++ args)
-    end)
+    Enum.zip(a, b)
+    |> Enum.map(fn {a, b} -> fun.(a, b) end)
   end
 
   defp elementwise(a, b, mod, fun) do
-    a
-    |> Enum.with_index()
-    |> Enum.map(fn {item, index} ->
-      Kernel.apply(mod, fun, [item, Enum.at(b, index)])
-    end)
+    Enum.zip(a, b)
+    |> Enum.map(fn {a, b} -> Kernel.apply(mod, fun, [a, b]) end)
+  end
+
+  defp elementwise(a, b, mod, fun, args) when is_list(args) do
+    Enum.zip(a, b)
+    |> Enum.map(fn {a, b} -> Kernel.apply(mod, fun, [a, b] ++ args) end)
   end
 end

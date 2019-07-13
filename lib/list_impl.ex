@@ -52,10 +52,6 @@ defimpl Zip, for: List do
   def apply(a, b, mod, fun, args), do: elementwise(a, b, mod, fun, args)
 
   defp elementwise(a, b, fun) do
-    if length(a) !== length(b) do
-      raise(Zip.CollectionsOfDifferentSizes, {a, b})
-    end
-
     a
     |> Enum.with_index()
     |> Enum.map(fn {item, index} ->
@@ -64,10 +60,6 @@ defimpl Zip, for: List do
   end
 
   defp elementwise(a, b, mod, fun, args) do
-    if length(a) !== length(b) do
-      raise(Zip.CollectionsOfDifferentSizes, {a, b})
-    end
-
     a
     |> Enum.with_index()
     |> Enum.map(fn {item, index} ->
@@ -76,10 +68,6 @@ defimpl Zip, for: List do
   end
 
   defp elementwise(a, b, mod, fun) do
-    if length(a) !== length(b) do
-      raise(Zip.CollectionsOfDifferentSizes, {a, b})
-    end
-
     a
     |> Enum.with_index()
     |> Enum.map(fn {item, index} ->

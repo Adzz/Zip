@@ -16,19 +16,13 @@ defmodule Zip.MixProject do
     ]
   end
 
-  # Run "mix help compile.app" to learn about applications.
   def application do
     [
       extra_applications: [:logger]
     ]
   end
 
-  # Run "mix help deps" to learn about dependencies.
-  defp deps do
-    [
-      {:ex_doc, "~> 0.19", only: :dev, runtime: false}
-    ]
-  end
+  defp deps, do: [{:ex_doc, "~> 0.19", only: :dev, runtime: false}]
 
   defp description() do
     """
@@ -37,9 +31,6 @@ defmodule Zip.MixProject do
   end
 
   defp package() do
-    [
-      licenses: ["Apache 2.0"],
-      links: %{"GitHub" => "https://github.com/Adzz/Zip"}
-    ]
+    [licenses: ["Apache 2.0"], links: %{"GitHub" => "https://github.com/Adzz/Zip"}]
   end
 end

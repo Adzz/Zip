@@ -16,3 +16,36 @@ defprotocol Zip do
   """
   def apply(collection_1, collection_2, operation)
 end
+
+# What is the advantage of having the operations be data structures?
+# I think I have been "defunctionalizing the continuation" without even realising?
+
+defprotocol MapM do
+  @moduledoc """
+  This works like the Enum.map we know and love. We can use it like this, if provide the correct
+  implementations for lists, addition of integers and decimals:
+
+      iex> MapM.apply([1, 2, 3], %Add{value: 10})
+      [11, 12, 13]
+
+      iex> MapM.apply([1, 2, Decimal.new(3)], %Add{value: 10})
+      [11, 12, #Decimal<13>]
+
+      iex> MapM.apply([1, 2, Decimal.new(3)], %Add{value: Decimal.new(10)})
+      [11, 12, #Decimal<13>]
+
+      iex> MapM.apply([[1, 2, Decimal.new(3)]], %Add{value: 10})
+      [[11, 12, #Decimal<13>]]
+  """
+  def apply(x, operation)
+end
+
+defimpl MapM, for: List do
+  def apply(a, operation = %{mapm: mapm}) do
+    Enum.map(a, fn x -> mapm.(x, operation) end)
+  end
+
+  def apply(a, fun) when is_function(fun) do
+    Enum.map(a, fun)
+  end
+end

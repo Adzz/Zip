@@ -1,4 +1,8 @@
 defprotocol Add do
+  # I think if you need free variables, that is where the value comes in.
+  # For example, to Add, you need two things to add together. If you Zip.add
+  # the the two variables come from the lists. If you map, the other one has to
+  # come from somewhere else.
   defstruct [:value, calculate: &__MODULE__.calculate/2, mapm: &__MODULE__.mapm/2]
   def calculate(a, b)
   def mapm(x, operation)

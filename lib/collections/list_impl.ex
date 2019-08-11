@@ -1,8 +1,8 @@
 defimpl Zip, for: List do
   # The case for our homemade operations
-  def apply(a, b, %{calculate: calculate}) do
+  def apply(a, b, %{zip: zip}) do
     Enum.zip(a, b)
-    |> Enum.map(fn {a, b} -> calculate.(a, b) end)
+    |> Enum.map(fn {a, b} -> zip.(a, b) end)
   end
 
   # falls-back to calling the function if it's not type we defined

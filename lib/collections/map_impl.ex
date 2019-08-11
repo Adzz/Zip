@@ -1,9 +1,9 @@
 defimpl Zip, for: Map do
-  def apply(a, b, %{calculate: calculate}) do
+  def apply(a, b, %{zip: zip}) do
     overlapping_map = Map.take(b, Map.keys(a))
 
     Enum.reduce(a, %{}, fn {key, value}, acc ->
-      Map.put(acc, key, calculate.(value, Map.fetch!(overlapping_map, key)))
+      Map.put(acc, key, zip.(value, Map.fetch!(overlapping_map, key)))
     end)
   end
 
@@ -18,12 +18,12 @@ defimpl Zip, for: Map do
 end
 
 defimpl Zip, for: PID do
-  def apply(a, b, %{calculate: calculate}) when is_pid(b) do
+  def apply(a, b, %{zip: zip}) when is_pid(b) do
     node_1_state = Agent.get(a, fn x -> x end)
     node_2_state = Agent.get(b, fn y -> y end)
 
     # This seems dangerous
-    Agent.start_link(fn -> calculate.(node_1_state, node_2_state) end)
+    Agent.start_link(fn -> zip.(node_1_state, node_2_state) end)
   end
 
   def apply(a, b, fun) when is_pid(b) and is_function(fun) do

@@ -1,17 +1,3 @@
-# defmodule Subtract do
-#   defstruct zip: &__MODULE__.zip/2
-#   @behaviour Operation
-
-#   @impl true
-#   def zip(a, b) when is_integer(a) and is_integer(b), do: a - b
-#   @impl true
-#   def zip(a = %Decimal{}, b = %Decimal{}), do: Decimal.sub(a, b)
-# end
-
-# Using protocols means we get extension, meaning
-# we can define some implementations of the functions, and everyone else can implement their own.
-# Otherwise we need to crack open the Subtract module and add implementations for zip there.
-
 defprotocol Subtract do
   defstruct zip: &__MODULE__.zip/2
   def zip(a, b)

@@ -1,18 +1,3 @@
-# defmodule Divide do
-#   defstruct zip: &__MODULE__.zip/2
-#   @behaviour Operation
-
-#   @impl true
-#   def zip(a, b) when is_integer(a) and is_integer(b), do: a / b
-#   @impl true
-#   def zip(a = %Decimal{}, b = %Decimal{}), do: Decimal.div(a, b)
-# end
-
-# Alternative with protocols. Using a behaviour allows us to ensure that
-# the module implements a function, which we can call in all of the
-# implementations of the Zip protocol. But using protocols means we get extension, meaning
-# we can define some implementations of the functions, and everyone else can implement their own
-
 defprotocol Divide do
   defstruct zip: &__MODULE__.zip/2
   def zip(a, b)

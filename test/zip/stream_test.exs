@@ -6,7 +6,7 @@ defmodule StreamImplTest do
     test "adds each element in the list elementwise" do
       a = Stream.concat([2, 4], [6])
       z = Stream.concat([2, 4], [6])
-      assert Zip.apply(a, z, %Add{}) |> Enum.to_list() == [4, 8, 12]
+      assert Zip.apply(a, z, %Zip.Add{}) |> Enum.to_list() == [4, 8, 12]
     end
   end
 

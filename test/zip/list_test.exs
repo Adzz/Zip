@@ -4,11 +4,11 @@ defmodule ListImplTest do
 
   describe "add/2" do
     test "adds each element in the list elementwise" do
-      assert Zip.apply([2, 4, 6], [2, 4, 6], %Add{}) == [4, 8, 12]
+      assert Zip.apply([2, 4, 6], [2, 4, 6], %Zip.Add{}) == [4, 8, 12]
     end
 
     test "empty lists" do
-      assert Zip.apply([], [], %Add{}) == []
+      assert Zip.apply([], [], %Zip.Add{}) == []
     end
   end
 

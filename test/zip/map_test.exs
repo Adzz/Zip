@@ -3,7 +3,7 @@ defmodule MapImplTest do
 
   describe "add/2" do
     test "adds each element in the list elementwise" do
-      assert Zip.apply(%{a: 2, c: 5}, %{a: 1, c: 3}, %Add{}) == %{a: 3, c: 8}
+      assert Zip.apply(%{a: 2, c: 5}, %{a: 1, c: 3}, %Zip.Add{}) == %{a: 3, c: 8}
     end
   end
 

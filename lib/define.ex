@@ -1,5 +1,4 @@
 # doing this @ runtime is probably bad because of protocol consolidation?
-
 defmodule Define do
   defmacro operation(name) do
     quote do
@@ -10,3 +9,7 @@ defmodule Define do
     end
   end
 end
+
+# Would this be better anyway? Easily define operations to extend
+# existing protocols. Allow for filter, fmap, etc etc..
+# Define.operation_for(Zip, Add)
